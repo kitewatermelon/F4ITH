@@ -1,0 +1,55 @@
+# RCT — pinned dependencies for reproducibility
+# Generated 2026-08-19 from the working environment.
+#   Python 3.13.13
+#   PyTorch 2.12.0 built for CUDA 13.0 (torch 2.12.0+cu130), cuDNN 9.2.0
+#
+# torch/torchvision are CUDA-build specific: install them from the matching
+# PyTorch index FIRST, then the rest:
+#   pip install torch==2.12.0 torchvision==0.27.0 --index-url https://download.pytorch.org/whl/cu130
+#   pip install -r requirements.txt
+
+# --- Core: RCT flow-matching denoiser (src/rct) ---
+torch==2.12.0
+torchvision==0.27.0
+pytorch-lightning==2.6.5
+timm==1.0.27                       # ChexWorld backbone (via stable-pretraining)
+transformers==5.10.2               # RAD-DINO backbone (AutoModel)
+huggingface-hub==1.16.1
+safetensors==0.7.0
+einops==0.8.2
+numpy==2.4.6
+pandas==3.0.3
+Pillow==12.2.0
+pylance==7.0.0                     # `import lance` — CXR dataset loader
+omegaconf==2.3.0
+tqdm==4.67.3
+wandb==0.27.2
+# stable-pretraining supplies the CheXWorld JEPA encoder. The reference env uses
+# a git dev build (0.1.9.dev3+g9aa93f8b6) that is NOT on PyPI — install from
+# source for an exact match (do this instead of a pinned line, which pip cannot
+# resolve):
+#   pip install "stable-pretraining @ git+https://github.com/rbalestr-lab/stable-pretraining"
+
+# --- Evaluation & metrics (scripts/) ---
+torch-fidelity==0.4.0              # FID / KID
+torchxrayvision==1.5.2             # RadFID (XRV-FID) + DenseNet-121 conditioning backbone
+frd-score==1.0.1                   # FRD
+open_clip_torch==3.3.0             # CMMD embedding
+faiss-cpu==1.14.2                  # nearest-neighbour distance metrics
+opencv-python-headless==4.13.0.92
+scipy==1.17.1
+albumentations==2.0.8
+requests==2.33.1
+
+# --- Baseline reproduction (baseline/RCDM, baseline/FeatInv) ---
+blobfile==3.2.0
+submitit==1.5.4
+# Imported only by baseline code and NOT installed in the reference env
+# (guarded/optional). Uncomment if reproducing those baselines:
+# xformers          # FeatInv LDM cross-attention (optional; runs without it)
+# tensorflow        # RCDM Inception evaluator
+# gradio            # FeatInv interactive demo
+
+# --- Dev / test ---
+pytest==9.0.3
+setuptools==81.0.0
