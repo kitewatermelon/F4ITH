@@ -82,11 +82,10 @@ Backbone options: `chexworld`, `raddino`, `xrv_densenet`.
 
 ```bibtex
 @article{park2026f4ith,
-  title     = {F4ITH: An Efficient and Faithful Inversion Transformer for Feature-Agnostic Probing of Chest X-ray Encoder Representations},
-  author    = {Park, Yeon Su and Choi, Ji-In and Won, Ji Hye},
-  journal   = {IEEE Transactions on Medical Imaging},
-  year      = {2026},
-  note      = {Under review}
+  title   = {F4ITH: An Efficient and Faithful Inversion Transformer for Feature-Agnostic Probing of Chest X-ray Encoder Representations},
+  author  = {Park, Yeon Su and Choi, Ji-In and Won, Ji Hye},
+  year    = {2026},
+  note    = {Preprint}
 }
 ```
 
